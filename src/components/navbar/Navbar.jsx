@@ -2,7 +2,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import logoImg from '../../assets/logo.png'
 import { Menu } from 'lucide-react';
 
-const NavBar = ({ cartCount = 0, onCartClick }) => {  // Add props
+const NavBar = ({ cartCount = 0, onCartClick }) => {
   return (
     <div className="navbar sticky top-0 z-50 bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -37,7 +37,7 @@ const NavBar = ({ cartCount = 0, onCartClick }) => {  // Add props
         {/* Cart Button with Badge */}
         <div className="relative">
           <button 
-            onClick={onCartClick}  // Add click handler
+            onClick={onCartClick}
             className='btn btn-circle text-2xl text-red-500'
           >
             <IoCartOutline />
