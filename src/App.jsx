@@ -17,11 +17,14 @@ function App() {
   const [activeTab, setActiveTab] = useState("model");
   const [carts, setCarts] = useState([])
 
-
+  const handleCartClick = () => {
+    setActiveTab("cart");
+  };
 
   return (
     <>
-      <NavBar />
+      {/* Pass cartCount and onCartClick to NavBar */}
+      <NavBar cartCount={carts.length} onCartClick={handleCartClick} />
 
       <Banner />
 
@@ -32,7 +35,7 @@ function App() {
           name="my_tabs_1"
           className={`tab rounded-full w-40 transition-all duration-300 ${
       activeTab === "model" 
-        ? "bg-linear-to-r from-pink-500 to-red-600 text-white shadow-lg" 
+        ? "bg-linear-to-r from-pink-500 to-red-600 text-white shadow-lg"
         : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`}
           aria-label="Models"
@@ -44,7 +47,7 @@ function App() {
           name="my_tabs_1"
            className={`tab rounded-full w-40 transition-all duration-300 ${
       activeTab === "cart" 
-        ? "bg-linear-to-r from-pink-500 to-red-600 text-white shadow-lg" 
+        ? "bg-linear-to-r from-pink-500 to-red-600 text-white shadow-lg"
         : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`}
           aria-label={`Cart (${carts.length})`}

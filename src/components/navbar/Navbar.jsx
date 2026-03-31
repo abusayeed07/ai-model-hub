@@ -2,7 +2,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import logoImg from '../../assets/logo.png'
 import { Menu } from 'lucide-react';
 
-const NavBar = () => {
+const NavBar = ({ cartCount = 0, onCartClick }) => {  // Add props
   return (
     <div className="navbar sticky top-0 z-50 bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -34,9 +34,21 @@ const NavBar = () => {
       </div>
 
       <div className="navbar-end gap-5">
-        <button className='btn btn-circle text-2xl text-red-500'>
-          <IoCartOutline />
-        </button>
+        {/* Cart Button with Badge */}
+        <div className="relative">
+          <button 
+            onClick={onCartClick}  // Add click handler
+            className='btn btn-circle text-2xl text-red-500'
+          >
+            <IoCartOutline />
+          </button>
+          {/* Notification Badge - shows only when cart has items */}
+          {cartCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+              {cartCount > 99 ? '99+' : cartCount}
+            </span>
+          )}
+        </div>
         <a className="btn bg-red-500 rounded-full text-white">Get in Touch</a>
       </div>
     </div>
